@@ -1,4 +1,4 @@
-import { publicApi } from "@/infrastructure/api/api";
+import { publicApi } from "../../api/api";
 import type {
   ApiResponse,
   RegisterPayload,
