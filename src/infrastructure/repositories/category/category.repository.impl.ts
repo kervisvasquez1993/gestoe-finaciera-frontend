@@ -2,7 +2,10 @@ import type {
   ICreateCategoryRequest,
   IUpdateCategoryRequest,
 } from "../../../domain/category/dto";
-import type { CategoryEntity } from "../../../domain/category/entities";
+import type {
+  CategoryEntity,
+  CategorySummaryEntity,
+} from "../../../domain/category/entities";
 import {
   CategoryAlreadyExistsError,
   CategoryHasTransactionsError,
@@ -21,6 +24,7 @@ import {
   getCategoryByIdAction,
   updateCategoryAction,
 } from "../../actions/category";
+import { getCategoriesSummaryAction } from "../../actions/category/get-categories-summary.action";
 import { normalizeHttpError } from "../../api/http-error";
 import { CategoryMapper } from "../../mappers/category";
 
@@ -80,6 +84,14 @@ export class CategoryRepositoryImpl implements ICategoryRepository {
         error,
         (msgs) => new CategoryHasTransactionsError(msgs[0]),
       );
+    }
+  }
+  async findSummary(): Promise<CategorySummaryEntity[]> {
+    try {
+      const response = await getCategoriesSummaryAction();
+      return response.map(CategoryMapper.toSummaryEntity);
+    } catch (error) {
+      throw this.mapError(error);
     }
   }
 

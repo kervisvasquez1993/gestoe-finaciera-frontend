@@ -5,6 +5,7 @@ export interface IFilterTransactionsRequest {
   categoryId?: string;
   startDate?: string;
   endDate?: string;
+  search?: string;
   page?: number;
   limit?: number;
 }

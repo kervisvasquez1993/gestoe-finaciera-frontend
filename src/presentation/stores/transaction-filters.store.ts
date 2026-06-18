@@ -6,6 +6,7 @@ export interface TransactionFilters {
   categoryId?: string;
   startDate?: string;
   endDate?: string;
+  search?: string;
   page: number;
   limit: number;
 }
@@ -15,6 +16,7 @@ const DEFAULT_FILTERS: TransactionFilters = {
   categoryId: undefined,
   startDate: undefined,
   endDate: undefined,
+  search: undefined,
   page: 1,
   limit: 10,
 };
@@ -34,7 +36,6 @@ export const useTransactionFiltersStore = create<TransactionFiltersState>(
     filters: DEFAULT_FILTERS,
     setFilter: (key, value) =>
       set((state) => ({
-        // Al cambiar cualquier filtro (menos page), volvemos a página 1
         filters: {
           ...state.filters,
           [key]: value,

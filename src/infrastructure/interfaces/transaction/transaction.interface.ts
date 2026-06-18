@@ -34,6 +34,7 @@ export interface FilterTransactionsParams {
   categoryId?: string;
   startDate?: string;
   endDate?: string;
+  search?: string;
   page?: number;
   limit?: number;
 }

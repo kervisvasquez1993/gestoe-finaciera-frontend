@@ -2,7 +2,10 @@ import type {
   ICreateCategoryRequest,
   IUpdateCategoryRequest,
 } from "../../../domain/category/dto";
-import type { CategoryEntity } from "../../../domain/category/entities";
+import type {
+  CategoryEntity,
+  CategorySummaryEntity,
+} from "../../../domain/category/entities";
 import type { ICategoryRepository } from "../../../domain/category/repositories";
 import type { ICategoryUseCases } from "../../../domain/category/use-cases";
 import { CategoryName } from "../../../domain/category/value-objects";
@@ -41,6 +44,10 @@ export class CategoryUseCases implements ICategoryUseCases {
 
   remove(id: string): Promise<void> {
     return this.repository.delete(id);
+  }
+
+  getSummary(): Promise<CategorySummaryEntity[]> {
+    return this.repository.findSummary();
   }
 }
 
