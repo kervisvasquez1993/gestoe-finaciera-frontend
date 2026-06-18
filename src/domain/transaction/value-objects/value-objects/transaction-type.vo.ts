@@ -1,3 +1,5 @@
+import { InvalidTransactionTypeError } from "../../errors";
+
 export type TransactionTypeValue = "entrada" | "saida";
 
 export class TransactionType {

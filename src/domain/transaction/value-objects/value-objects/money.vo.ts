@@ -1,3 +1,5 @@
+import { InvalidAmountError } from "../../errors";
+
 export class Money {
   private readonly value: number;
 
