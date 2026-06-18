@@ -4,3 +4,4 @@ export * from "./alert";
 export * from "./success";
 export * from "./form";
 export * from "./data-list";
+export * from "./select";
