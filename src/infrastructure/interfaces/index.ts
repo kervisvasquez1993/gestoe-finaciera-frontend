@@ -3,3 +3,4 @@ export * from "./auth/auth.interface";
 export * from "./category/category.interface";
 export * from "./transaction/transaction.interface";
 export * from "./user/user.interface";
+export * from "./dashboard/dashboard.interface";
