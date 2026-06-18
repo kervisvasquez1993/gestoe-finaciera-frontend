@@ -1,31 +1,35 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-interface AuthUser {
-  id: string;
-  name: string;
-  email: string;
+type Theme = "light" | "dark";
+
+interface ThemeState {
+  theme: Theme;
+  toggleTheme: () => void;
+  setTheme: (theme: Theme) => void;
 }
 
-interface AuthState {
-  accessToken: string | null;
-  user: AuthUser | null;
-  isAuthenticated: boolean;
-  setSession: (token: string, user: AuthUser) => void;
-  clearSession: () => void;
-}
-
-export const useAuthStore = create<AuthState>()(
+export const useThemeStore = create<ThemeState>()(
   persist(
     (set) => ({
-      accessToken: null,
-      user: null,
-      isAuthenticated: false,
-      setSession: (token, user) =>
-        set({ accessToken: token, user, isAuthenticated: true }),
-      clearSession: () =>
-        set({ accessToken: null, user: null, isAuthenticated: false }),
+      theme: "light",
+      toggleTheme: () =>
+        set((state) => {
+          const next = state.theme === "light" ? "dark" : "light";
+          document.documentElement.setAttribute("data-theme", next);
+          return { theme: next };
+        }),
+      setTheme: (theme) => {
+        document.documentElement.setAttribute("data-theme", theme);
+        set({ theme });
+      },
     }),
-    { name: "auth-storage" },
+    {
+      name: "theme-storage",
+      onRehydrateStorage: () => (state) => {
+        if (state)
+          document.documentElement.setAttribute("data-theme", state.theme);
+      },
+    },
   ),
 );

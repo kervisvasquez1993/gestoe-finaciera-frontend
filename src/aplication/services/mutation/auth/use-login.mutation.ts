@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 
 import type { ILoginRequest } from "../../../../domain/auth/dto";
 import { authUseCases } from "../../../use-cases/auth";
-import { useAuthStore } from "../../../../presentation/stores/theme.store";
+import { useAuthStore } from "../../../../presentation/stores/auth.store";
 
 export const useLoginMutation = () => {
   const setSession = useAuthStore((state) => state.setSession);

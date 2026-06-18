@@ -5,7 +5,7 @@ import {
 } from "axios";
 import { AxiosAdapter } from "./adapters/axios.adapters";
 import { HttpAdapter } from "./adapters/http.adapters";
-import { useAuthStore } from "../../presentation/stores/theme.store";
+import { useAuthStore } from "../../presentation/stores/auth.store";
 
 interface ApiFactoryOptions {
   baseUrl: string;

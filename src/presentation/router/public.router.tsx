@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
-import { useAuthStore } from "../stores/theme.store";
+import { useAuthStore } from "../stores/auth.store";
 import { validateToken } from "../utils/validate-token";
 
 interface Props {

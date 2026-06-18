@@ -6,3 +6,4 @@ export * from "./form";
 export * from "./data-list";
 export * from "./select";
 export * from "./modal";
+export * from "./theme-toggle";
