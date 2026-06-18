@@ -1,4 +1,6 @@
+import { ArrowRight } from "lucide-react";
 import type { TopCategorySaida } from "../../../domain/dashboard/entities";
+import { useGoToFilteredTransactions } from "../../hooks/transaction/use-go-to-filtered-transactions.hook";
 
 interface TopCategoriesProps {
   categories: TopCategorySaida[];
@@ -11,6 +13,8 @@ const formatCurrency = (value: number) =>
   }).format(value);
 
 export const TopCategories = ({ categories }: TopCategoriesProps) => {
+  const { goWithFilters } = useGoToFilteredTransactions();
+
   if (categories.length === 0) {
     return (
       <div className="rounded-xl border border-border bg-surface p-5">
@@ -29,14 +33,29 @@ export const TopCategories = ({ categories }: TopCategoriesProps) => {
   return (
     <div className="rounded-xl border border-border bg-surface p-5">
       <h2 className="mb-4 font-semibold text-text">Top categorías de gastos</h2>
+
       <div className="flex flex-col gap-4">
         {categories.map((cat) => (
           <div key={cat.categoryId} className="flex flex-col gap-1.5">
-            <div className="flex items-center justify-between text-sm">
+            <div className="flex items-center justify-between gap-3 text-sm">
               <span className="font-medium text-text">{cat.categoryName}</span>
-              <span className="text-text-muted">
-                {formatCurrency(cat.total)}
-              </span>
+              <div className="flex items-center gap-3">
+                <span className="text-text-muted">
+                  {formatCurrency(cat.total)}
+                </span>
+                <button
+                  onClick={() =>
+                    goWithFilters({
+                      type: "saida",
+                      categoryId: cat.categoryId,
+                    })
+                  }
+                  className="flex items-center gap-1 whitespace-nowrap text-xs font-medium text-primary-600 hover:underline"
+                >
+                  Ver más
+                  <ArrowRight size={12} />
+                </button>
+              </div>
             </div>
             <div className="h-2 overflow-hidden rounded-full bg-surface-hover">
               <div
@@ -47,6 +66,14 @@ export const TopCategories = ({ categories }: TopCategoriesProps) => {
           </div>
         ))}
       </div>
+
+      <button
+        onClick={() => goWithFilters({ type: "saida" })}
+        className="mt-5 flex w-full items-center justify-center gap-1 rounded-lg border border-border py-2.5 text-sm font-medium text-text-muted transition-colors hover:bg-surface-hover hover:text-text"
+      >
+        Ver todas las transacciones
+        <ArrowRight size={14} />
+      </button>
     </div>
   );
 };
