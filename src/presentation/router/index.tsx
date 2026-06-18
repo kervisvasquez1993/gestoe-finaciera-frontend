@@ -8,6 +8,7 @@ import PrivateRoute from "./private.router";
 import { DashboardLayout } from "../layouts/dashboard.layout";
 import { HomeScreen } from "../screens/home/home.screen";
 import { CategoriesScreen } from "../screens/category/categories.screen";
+import { TransactionsScreen } from "../screens/transaction/transactions.screen";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <HomeScreen /> },
       { path: "categories", element: <CategoriesScreen /> },
+      { path: "transactions", element: <TransactionsScreen /> },
     ],
   },
   {

@@ -1,6 +1,6 @@
 import { Select } from "../../../components/ui";
+import { useCategories } from "../../../hooks/category/use-categories.hook";
 import { useTransactionFiltersStore } from "../../../stores/transaction-filters.store";
-import { useCategories } from "../../category/use-categories.hook";
 
 export const FilterCategory = () => {
   const { categories } = useCategories();
