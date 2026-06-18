@@ -7,6 +7,7 @@ import { RegisterScreen } from "../screens/auth/register.screen";
 import PrivateRoute from "./private.router";
 import { DashboardLayout } from "../layouts/dashboard.layout";
 import { HomeScreen } from "../screens/home/home.screen";
+import { CategoriesScreen } from "../screens/category/categories.screen";
 
 export const router = createBrowserRouter([
   {
@@ -33,7 +34,10 @@ export const router = createBrowserRouter([
         </PrivateRoute>
       </Suspense>
     ),
-    children: [{ index: true, element: <HomeScreen /> }],
+    children: [
+      { index: true, element: <HomeScreen /> },
+      { path: "categories", element: <CategoriesScreen /> },
+    ],
   },
   {
     path: "*",
