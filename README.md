@@ -6,8 +6,31 @@ com dashboard de indicadores, filtros e paginação.
 
 Construído em **React 19 + TypeScript**, consumindo uma API REST em NestJS.
 
-> 🔗 **Deploy:** [adicionar link aqui]
-> 🔗 **Repositório backend:** [adicionar link aqui]
+---
+
+## Links
+
+- **Frontend em produção (Vercel):** https://gestoe-finaciera-frontend.vercel.app
+- **API em produção (Swagger):** https://dev.backend-api-agua.shop/api/docs
+- **Repositório backend:** https://github.com/kervisvasquez1993/Gest-o-Financeira
+- **Repositório wrapper (execução local de backend + frontend):** https://github.com/kervisvasquez1993/wrapper-gestao-financiera
+
+> ⚠️ **Sobre este repositório:** contém **apenas o frontend** e está pensado para
+> **deploy em produção** (publicado na Vercel) e para registrar o histórico de
+> commits do desenvolvimento. **Não é destinado a execução local isolada.**
+>
+> Para rodar o projeto completo localmente (backend + frontend + PostgreSQL com
+> um único comando via Docker Compose), utilize o **repositório wrapper** acima,
+> que orquestra ambos os serviços e contém as instruções de execução local.
+
+### Credenciais de teste (pós-seed)
+
+Ambos os usuários têm a senha **`123456`**:
+
+| Email               | Senha    |
+| ------------------- | -------- |
+| `joao@example.com`  | `123456` |
+| `maria@example.com` | `123456` |
 
 ---
 
@@ -18,9 +41,11 @@ Construído em **React 19 + TypeScript**, consumindo uma API REST em NestJS.
 - **Categorias** — CRUD completo via modais, com tratamento do caso de exclusão
   bloqueada (categoria com transações associadas).
 - **Transações** — criação e edição em páginas dedicadas, exclusão com
-  confirmação, listagem paginada e filtros (tipo, categoria, período).
+  confirmação, listagem paginada e filtros (tipo, categoria, período e busca por
+  texto na descrição).
 - **Dashboard** — saldo atual, total de entradas/saídas e top 3 categorias de
-  gastos, com filtro de período. Todos os cálculos vêm da API.
+  gastos, com filtro de período. Cada item do top leva à lista de transações já
+  filtrada. Todos os cálculos vêm da API.
 - **Tema claro/escuro** — alternância persistida, via tokens semânticos de cor.
 - **Feedback visual** — estados de carregamento, erro e sucesso em todas as
   operações.
@@ -39,6 +64,7 @@ Construído em **React 19 + TypeScript**, consumindo uma API REST em NestJS.
 | Formulários        | React Hook Form + Zod                         |
 | Rotas              | React Router                                  |
 | HTTP               | Axios (via adapter)                           |
+| Testes             | Vitest                                        |
 
 ### Gerenciamento de estado — justificativa
 
@@ -72,18 +98,23 @@ O enunciado indica que DDD não é necessário, e isso está correto: o problema
 exige essa complexidade. **A escolha de aplicar uma arquitetura em camadas
 inspirada em DDD foi deliberada**, pelos seguintes motivos:
 
-1. É a forma como trabalho no dia a dia em React, e me permite desenvolver com
-   velocidade e consistência — a estrutura já é familiar e cada peça tem um lugar
-   óbvio.
-2. Mantém a regra de negócio (validações, value objects) desacoplada da API e da
-   UI. Se o backend mudar o formato de resposta, só a camada de
-   `infrastructure` é tocada.
-3. Facilita testes: os use cases dependem de interfaces, não de implementações,
-   então podem ser testados sem mockar Axios.
+1. **É a forma como trabalho no dia a dia** em React, e me dá fluidez e
+   confiança. Aplicá-la **não representou atraso nem dificuldade** — pelo
+   contrário, a estrutura já é familiar e cada peça tem um lugar óbvio, o que me
+   permitiu manter um ritmo de desenvolvimento consistente e cumprir o prazo.
+2. **É consequência de escrever código limpo**, princípio que sigo sempre:
+   separar responsabilidades, manter a regra de negócio (validações, value
+   objects) desacoplada da API e da UI. Se o backend mudar o formato de
+   resposta, só a camada de `infrastructure` é tocada.
+3. **Facilita testes**: os use cases dependem de interfaces, não de
+   implementações, então podem ser testados sem mockar Axios — exatamente o que
+   foi feito na suíte de testes.
 
-A separação é simples de seguir e **não introduz over-engineering operacional**
-(sem filas, sem event sourcing, sem CQRS): é apenas organização de código em
-camadas com dependências apontando para o centro.
+A separação foi mantida **proporcional ao problema** e **não introduz
+over-engineering operacional**: sem filas, sem event sourcing, sem CQRS. É
+apenas organização de código em camadas com as dependências apontando para o
+centro — uma Clean Architecture leve, voltada a manutenção e testes, na mesma
+linha da decisão tomada no backend.
 
 ---
 
@@ -124,19 +155,46 @@ tema reflete em toda a aplicação sem alterar componente algum.
 
 ---
 
-## 🚀 Como rodar localmente
+## 🧪 Testes
+
+Os testes focam na **lógica pura e regras de negócio**, não em componentes
+triviais — qualidade e relevância acima de quantidade, conforme o enunciado.
+São **17 casos em 4 suites**, cobrindo as camadas onde vive a regra de negócio:
+
+| Suite                 | Casos cobertos                                                          |
+| --------------------- | ----------------------------------------------------------------------- |
+| Value objects         | `Email`, `Password`, `Money`, `TransactionType` — invariantes e limites |
+| `normalizeHttpError`  | Parse do erro do backend, incluindo `message` como `string[]`           |
+| `TransactionMapper`   | Resposta → entidade com value objects; valor com sinal; paginação       |
+| `TransactionUseCases` | Valida o domínio **antes** de chamar o repositório (com repo mockado)   |
+
+A suíte do use case demonstra o benefício da arquitetura: como o caso de uso
+depende de uma interface, basta mockar o repositório — sem tocar em Axios nem na
+rede.
+
+Executar:
+
+```bash
+npm run test         # modo watch
+npm run test:run     # execução única (CI)
+```
+
+---
+
+## 🚀 Desenvolvimento local (apenas frontend)
+
+> Para rodar a stack completa, use o **repositório wrapper**. Esta seção é só
+> para trabalhar isoladamente no frontend, apontando para uma API já em execução.
 
 ### Pré-requisitos
 
 - Node.js 20+
-- API backend rodando (ver repositório do backend)
+- API backend acessível (local ou a de produção)
 
 ### Passo a passo
 
 ```bash
-# 1. Clonar e instalar dependências
-git clone <url-do-repo>
-cd gestao-finaciera-frontend
+# 1. Instalar dependências
 npm install
 
 # 2. Configurar variáveis de ambiente
@@ -157,17 +215,40 @@ VITE_API_URL=http://localhost:3000/api
 ```
 
 Apenas variáveis com prefixo `VITE_` são expostas ao client (regra do Vite).
+A variável é compilada no bundle em **build time** — ao trocar de ambiente, é
+necessário rebuildar.
+
+---
+
+## 🐳 Docker
+
+A imagem é multi-stage (build com `node:22-alpine`, produção com `nginx:alpine`
+servindo apenas os estáticos). O nginx está configurado com fallback a
+`index.html` para o routing da SPA.
+
+```bash
+docker build \
+  --build-arg VITE_API_URL=http://localhost:3000/api \
+  -t gestao-financiera-frontend .
+
+docker run -p 8080:80 gestao-financiera-frontend
+```
+
+> A `VITE_API_URL` vai como `--build-arg` (não como env de runtime) porque o
+> Vite a compila no bundle. No wrapper, é passada via `build.args` do compose.
 
 ---
 
 ## 📜 Scripts
 
-| Script            | Descrição                      |
-| ----------------- | ------------------------------ |
-| `npm run dev`     | Servidor de desenvolvimento    |
-| `npm run build`   | Type-check + build de produção |
-| `npm run preview` | Pré-visualização do build      |
-| `npm run lint`    | ESLint                         |
+| Script             | Descrição                      |
+| ------------------ | ------------------------------ |
+| `npm run dev`      | Servidor de desenvolvimento    |
+| `npm run build`    | Type-check + build de produção |
+| `npm run preview`  | Pré-visualização do build      |
+| `npm run lint`     | ESLint                         |
+| `npm run test`     | Testes (watch)                 |
+| `npm run test:run` | Testes (execução única)        |
 
 ---
 
@@ -182,15 +263,6 @@ Apenas variáveis com prefixo `VITE_` são expostas ao client (regra do Vite).
   `pre-commit`.
 - **Componentes pequenos** — UI dividida em componentes reutilizáveis;
   formulários e listas usam composição (compound components).
-
----
-
-## 🔑 Credenciais de teste
-
-```
-E-mail: [adicionar usuário seed]
-Senha:  [adicionar senha]
-```
 
 ---
 
