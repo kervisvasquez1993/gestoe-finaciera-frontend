@@ -23,17 +23,6 @@ Construído em **React 19 + TypeScript**, consumindo uma API REST em NestJS.
 > um único comando via Docker Compose), utilize o **repositório wrapper** acima,
 > que orquestra ambos os serviços e contém as instruções de execução local.
 
-### Credenciais de teste (pós-seed)
-
-Ambos os usuários têm a senha **`123456`**:
-
-| Email               | Senha    |
-| ------------------- | -------- |
-| `joao@example.com`  | `123456` |
-| `maria@example.com` | `123456` |
-
----
-
 ## ✨ Funcionalidades
 
 - **Autenticação** — registro, login com JWT, rotas protegidas e validação de
