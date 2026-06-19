@@ -22,17 +22,17 @@ export const EditCategoryModal = ({
   return (
     <Modal open={open} onOpenChange={onOpenChange}>
       <Modal.Content
-        title="Editar categoría"
-        description="Modificá los datos de la categoría"
+        title="Editar categoria"
+        description="Modifique os dados da categoria"
       >
         <Form control={control} errors={errors} onSubmit={handleSubmit}>
           <Form.Error message={serverError} />
 
-          <Form.Field name="name" label="Nombre" placeholder="Ej: Comida" />
+          <Form.Field name="name" label="Nome" placeholder="Ex: Comida" />
           <Form.Field
             name="description"
-            label="Descripción (opcional)"
-            placeholder="Una breve descripción"
+            label="Descrição (opcional)"
+            placeholder="Uma breve descrição"
           />
 
           <div className="flex justify-end gap-2">
@@ -42,7 +42,7 @@ export const EditCategoryModal = ({
               </Button>
             </Modal.Close>
             <Button type="submit" size="sm" isLoading={isPending}>
-              Guardar cambios
+              Salvar alterações
             </Button>
           </div>
         </Form>

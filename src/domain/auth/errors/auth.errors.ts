@@ -15,7 +15,7 @@ export class InvalidNameError extends DomainError {
 export class InvalidCredentialsError extends DomainError {
   readonly code = "INVALID_CREDENTIALS";
 
-  constructor(message = "Credenciales inválidas") {
+  constructor(message = "Credenciais inválidas") {
     super(message);
   }
 }
@@ -23,7 +23,7 @@ export class InvalidCredentialsError extends DomainError {
 export class EmailAlreadyExistsError extends DomainError {
   readonly code = "EMAIL_ALREADY_EXISTS";
 
-  constructor(message = "El email ya está registrado") {
+  constructor(message = "O e-mail já está cadastrado") {
     super(message);
   }
 }
@@ -33,7 +33,7 @@ export class ValidationError extends DomainError {
   readonly messages: string[];
 
   constructor(messages: string[]) {
-    super(messages[0] ?? "Error de validación");
+    super(messages[0] ?? "Erro de validação");
     this.messages = messages;
   }
 }
@@ -41,7 +41,7 @@ export class ValidationError extends DomainError {
 export class UnexpectedError extends DomainError {
   readonly code = "UNEXPECTED_ERROR";
 
-  constructor(message = "Ocurrió un error inesperado") {
+  constructor(message = "Ocorreu um erro inesperado") {
     super(message);
   }
 }

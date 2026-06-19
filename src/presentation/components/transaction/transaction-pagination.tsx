@@ -31,7 +31,7 @@ export const TransactionPagination = ({ meta }: TransactionPaginationProps) => {
           disabled={page >= totalPages}
           className="rounded-lg border border-border px-3 py-1.5 text-sm text-text disabled:cursor-not-allowed disabled:opacity-50"
         >
-          Siguiente
+          Próxima
         </button>
       </div>
     </div>

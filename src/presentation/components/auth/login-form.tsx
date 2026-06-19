@@ -14,24 +14,24 @@ export const LoginForm = () => {
       <Form.Field
         name="email"
         type="email"
-        label="Email"
-        placeholder="tu@email.com"
+        label="E-mail"
+        placeholder="seu@email.com"
       />
       <Form.Field
         name="password"
         type="password"
-        label="Contraseña"
+        label="Senha"
         placeholder="••••••••"
       />
 
       <Button type="submit" isLoading={isPending}>
-        Iniciar sesión
+        Entrar
       </Button>
 
       <p className="text-center text-sm text-text-muted">
-        ¿No tenés cuenta?{" "}
+        Não tem conta?{" "}
         <Link to="/register" className="font-medium text-primary-600">
-          Registrate
+          Cadastre-se
         </Link>
       </p>
     </Form>

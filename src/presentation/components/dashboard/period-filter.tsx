@@ -24,7 +24,7 @@ export const PeriodFilter = () => {
   return (
     <div className="flex flex-wrap items-end gap-3 rounded-xl border border-border bg-surface p-4">
       <div className="flex flex-col gap-1.5">
-        <label className="text-xs font-medium text-text-muted">Desde</label>
+        <label className="text-xs font-medium text-text-muted">De</label>
         <Input
           type="date"
           value={startDate}
@@ -32,7 +32,7 @@ export const PeriodFilter = () => {
         />
       </div>
       <div className="flex flex-col gap-1.5">
-        <label className="text-xs font-medium text-text-muted">Hasta</label>
+        <label className="text-xs font-medium text-text-muted">Até</label>
         <Input
           type="date"
           value={endDate}
@@ -44,7 +44,7 @@ export const PeriodFilter = () => {
           onClick={clear}
           className="px-2 py-2 text-sm font-medium text-primary-600 hover:underline"
         >
-          Todo el período
+          Todo o período
         </button>
       )}
     </div>

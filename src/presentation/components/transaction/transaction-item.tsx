@@ -10,7 +10,7 @@ interface TransactionItemProps {
 }
 
 const formatAmount = (value: number) =>
-  new Intl.NumberFormat("es-AR", {
+  new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
   }).format(value);
@@ -34,7 +34,7 @@ export const TransactionItem = ({ transaction }: TransactionItemProps) => {
             {transaction.description}
           </span>
           <span className="text-sm text-text-muted">
-            {transaction.category?.name.toString() ?? "Sin categoría"} ·{" "}
+            {transaction.category?.name.toString() ?? "Sem categoria"} ·{" "}
             {transaction.date}
           </span>
         </div>

@@ -3,7 +3,7 @@ import { useTransactionFiltersStore } from "../../../stores/transaction-filters.
 
 const TYPE_OPTIONS = [
   { value: "entrada", label: "Entrada" },
-  { value: "saida", label: "Salida" },
+  { value: "saida", label: "Saída" },
 ];
 
 export const FilterType = () => {
@@ -13,7 +13,7 @@ export const FilterType = () => {
   return (
     <Select
       options={TYPE_OPTIONS}
-      placeholder="Todos los tipos"
+      placeholder="Todos os tipos"
       value={type ?? ""}
       onChange={(e) =>
         setFilter(

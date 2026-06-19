@@ -20,10 +20,10 @@ export const DeleteCategoryModal = ({
   return (
     <Modal open={open} onOpenChange={onOpenChange}>
       <Modal.Content
-        title="Eliminar categoría"
+        title="Excluir categoria"
         description={
           category
-            ? `¿Seguro que querés eliminar "${category.name.toString()}"?`
+            ? `Tem certeza de que deseja excluir "${category.name.toString()}"?`
             : undefined
         }
       >
@@ -42,7 +42,7 @@ export const DeleteCategoryModal = ({
               isLoading={isDeleting}
               onClick={() => category && remove(category.id)}
             >
-              Eliminar
+              Excluir
             </Button>
           </div>
         </div>

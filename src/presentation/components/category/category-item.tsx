@@ -39,7 +39,7 @@ export const CategoryItem = ({
         <Button
           variant="ghost"
           size="icon"
-          aria-label="Eliminar"
+          aria-label="Excluir"
           onClick={() => onDelete(category)}
           className="text-danger hover:bg-danger/10"
         >

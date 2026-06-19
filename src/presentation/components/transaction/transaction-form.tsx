@@ -7,7 +7,7 @@ import type { CreateTransactionFormInput } from "../../schemas/transaction";
 
 const TYPE_OPTIONS = [
   { value: "entrada", label: "Entrada" },
-  { value: "saida", label: "Salida" },
+  { value: "saida", label: "Saída" },
 ];
 
 interface TransactionFormProps {
@@ -35,8 +35,8 @@ export const TransactionForm = ({
 
       <Form.Field
         name="description"
-        label="Descripción"
-        placeholder="Ej: Compra del super"
+        label="Descrição"
+        placeholder="Ex: Compra do mercado"
       />
 
       <Controller
@@ -47,7 +47,7 @@ export const TransactionForm = ({
             id="amount"
             type="number"
             step="0.01"
-            label="Monto"
+            label="Valor"
             placeholder="0.00"
             value={field.value ?? ""}
             onChange={(e) =>
@@ -69,7 +69,7 @@ export const TransactionForm = ({
             {...field}
             id="type"
             label="Tipo"
-            placeholder="Seleccioná un tipo"
+            placeholder="Selecione um tipo"
             options={TYPE_OPTIONS}
             error={errors.type?.message}
           />
@@ -84,7 +84,7 @@ export const TransactionForm = ({
             {...field}
             id="date"
             type="date"
-            label="Fecha"
+            label="Data"
             error={errors.date?.message}
           />
         )}

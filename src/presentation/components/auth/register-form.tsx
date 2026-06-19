@@ -18,28 +18,28 @@ export const RegisterForm = () => {
       <Form.Error message={serverError} />
       <Form.Success message={successMessage} />
 
-      <Form.Field name="name" label="Nombre" placeholder="Tu nombre" />
+      <Form.Field name="name" label="Nome" placeholder="Seu nome" />
       <Form.Field
         name="email"
         type="email"
-        label="Email"
-        placeholder="tu@email.com"
+        label="E-mail"
+        placeholder="seu@email.com"
       />
       <Form.Field
         name="password"
         type="password"
-        label="Contraseña"
+        label="Senha"
         placeholder="••••••••"
       />
 
       <Button type="submit" isLoading={isPending}>
-        Crear cuenta
+        Criar conta
       </Button>
 
       <p className="text-center text-sm text-text-muted">
-        ¿Ya tenés cuenta?{" "}
+        Já tem conta?{" "}
         <Link to="/login" className="font-medium text-primary-600">
-          Iniciá sesión
+          Entre
         </Link>
       </p>
     </Form>

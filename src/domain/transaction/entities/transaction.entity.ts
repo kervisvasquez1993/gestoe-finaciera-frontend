@@ -52,7 +52,6 @@ export class TransactionEntity {
     return this.props.updatedAt;
   }
 
-  // Monto con signo según el tipo (útil para UI / cálculos locales)
   signedAmount(): number {
     const value = this.props.amount.toNumber();
     return this.props.type.isSaida() ? -value : value;

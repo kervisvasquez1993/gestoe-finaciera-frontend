@@ -19,7 +19,7 @@ export const DeleteTransactionButton = ({
       <Button
         variant="ghost"
         size="icon"
-        aria-label="Eliminar"
+        aria-label="Excluir"
         onClick={() => setOpen(true)}
         className="text-danger hover:bg-danger/10"
       >
@@ -28,8 +28,8 @@ export const DeleteTransactionButton = ({
 
       <Modal open={open} onOpenChange={setOpen}>
         <Modal.Content
-          title="Eliminar transacción"
-          description="Esta acción no se puede deshacer."
+          title="Excluir transação"
+          description="Esta ação não pode ser desfeita."
         >
           <div className="flex flex-col gap-4">
             {deleteError && <Alert message={deleteError} />}
@@ -46,7 +46,7 @@ export const DeleteTransactionButton = ({
                 onClick={remove}
                 isLoading={isDeleting}
               >
-                Eliminar
+                Excluir
               </Button>
             </div>
           </div>

@@ -17,7 +17,7 @@ export const FilterCategory = () => {
   return (
     <Select
       options={options}
-      placeholder="Todas las categorías"
+      placeholder="Todas as categorias"
       value={categoryId ?? ""}
       onChange={(e) => setFilter("categoryId", e.target.value || undefined)}
     />

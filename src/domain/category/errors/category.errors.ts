@@ -7,7 +7,7 @@ export class InvalidCategoryNameError extends DomainError {
 export class CategoryNotFoundError extends DomainError {
   readonly code = "CATEGORY_NOT_FOUND";
 
-  constructor(message = "La categoría no existe") {
+  constructor(message = "A categoria não existe") {
     super(message);
   }
 }
@@ -15,7 +15,7 @@ export class CategoryNotFoundError extends DomainError {
 export class CategoryAlreadyExistsError extends DomainError {
   readonly code = "CATEGORY_ALREADY_EXISTS";
 
-  constructor(message = "Ya existe una categoría con ese nombre") {
+  constructor(message = "Já existe uma categoria com esse nome") {
     super(message);
   }
 }
@@ -24,7 +24,7 @@ export class CategoryHasTransactionsError extends DomainError {
   readonly code = "CATEGORY_HAS_TRANSACTIONS";
 
   constructor(
-    message = "No se puede eliminar: la categoría tiene transacciones asociadas",
+    message = "Não é possível excluir: a categoria possui transações associadas",
   ) {
     super(message);
   }

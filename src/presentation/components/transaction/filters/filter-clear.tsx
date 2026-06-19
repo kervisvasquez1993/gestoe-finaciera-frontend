@@ -17,7 +17,7 @@ export const FilterClear = () => {
       onClick={resetFilters}
       className="text-sm font-medium text-primary-600 hover:underline"
     >
-      Limpiar filtros
+      Limpar filtros
     </button>
   );
 };

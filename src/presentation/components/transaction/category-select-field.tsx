@@ -38,7 +38,6 @@ export const CategorySelectField = <T extends FieldValues>({
     label: c.name.toString(),
   }));
 
-  // autoselecciona la categoría recién creada (a nivel componente, no en el render-prop)
   useEffect(() => {
     if (lastCreatedId && categories.some((c) => c.id === lastCreatedId)) {
       setValue(name, lastCreatedId as never);
@@ -49,13 +48,13 @@ export const CategorySelectField = <T extends FieldValues>({
   return (
     <div className="flex flex-col gap-1.5">
       <div className="flex items-center justify-between">
-        <label className="text-sm font-medium text-text">Categoría</label>
+        <label className="text-sm font-medium text-text">Categoria</label>
         <button
           type="button"
           onClick={() => setModalOpen(true)}
           className="text-xs font-medium text-primary-600 hover:underline"
         >
-          + Nueva
+          + Nova
         </button>
       </div>
 
@@ -66,7 +65,7 @@ export const CategorySelectField = <T extends FieldValues>({
           <Select
             {...field}
             options={options}
-            placeholder="Seleccioná una categoría"
+            placeholder="Selecione uma categoria"
             error={error}
           />
         )}

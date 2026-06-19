@@ -24,7 +24,7 @@ export const FilterSearch = () => {
       />
       <Input
         type="text"
-        placeholder="Buscar por descripción..."
+        placeholder="Buscar por descrição..."
         value={value}
         onChange={(e) => setValue(e.target.value)}
         className="rounded-full border-border bg-background pl-9"

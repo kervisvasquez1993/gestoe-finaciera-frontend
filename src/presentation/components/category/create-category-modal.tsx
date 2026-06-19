@@ -12,27 +12,27 @@ export const CreateCategoryModal = ({
 }: CreateCategoryModalProps) => {
   const { control, errors, isPending, serverError, handleSubmit } =
     useCreateCategoryModal({
-      onCreated: () => onOpenChange(false), // cierra al crear
+      onCreated: () => onOpenChange(false),
     });
 
   return (
     <Modal open={open} onOpenChange={onOpenChange}>
       <Modal.Content
-        title="Nueva categoría"
-        description="Creá una categoría para clasificar tus transacciones"
+        title="Nova categoria"
+        description="Crie uma categoria para classificar suas transações"
       >
         <Form control={control} errors={errors} onSubmit={handleSubmit}>
           <Form.Error message={serverError} />
 
-          <Form.Field name="name" label="Nombre" placeholder="Ej: Comida" />
+          <Form.Field name="name" label="Nome" placeholder="Ex: Comida" />
           <Form.Field
             name="description"
-            label="Descripción (opcional)"
-            placeholder="Una breve descripción"
+            label="Descrição (opcional)"
+            placeholder="Uma breve descrição"
           />
 
           <Button type="submit" isLoading={isPending}>
-            Crear categoría
+            Criar categoria
           </Button>
         </Form>
       </Modal.Content>

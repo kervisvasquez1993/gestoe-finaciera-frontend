@@ -15,7 +15,7 @@ export class InvalidTransactionDescriptionError extends DomainError {
 export class TransactionNotFoundError extends DomainError {
   readonly code = "TRANSACTION_NOT_FOUND";
 
-  constructor(message = "La transacción no existe") {
+  constructor(message = "A transação não existe") {
     super(message);
   }
 }
@@ -23,7 +23,7 @@ export class TransactionNotFoundError extends DomainError {
 export class TransactionCategoryInvalidError extends DomainError {
   readonly code = "TRANSACTION_CATEGORY_INVALID";
 
-  constructor(message = "La categoría no existe o no es del usuario") {
+  constructor(message = "A categoria não existe ou não pertence ao usuário") {
     super(message);
   }
 }

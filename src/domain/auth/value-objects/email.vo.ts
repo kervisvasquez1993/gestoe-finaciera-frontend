@@ -12,10 +12,12 @@ export class Email {
   static create(value: string): Email {
     const normalized = value.trim().toLowerCase();
     if (!EMAIL_REGEX.test(normalized)) {
-      throw new InvalidEmailError("El email no es válido");
+      throw new InvalidEmailError("O e-mail não é válido");
     }
     if (normalized.length > 180) {
-      throw new InvalidEmailError("El email no puede superar 180 caracteres");
+      throw new InvalidEmailError(
+        "O e-mail não pode ultrapassar 180 caracteres",
+      );
     }
     return new Email(normalized);
   }

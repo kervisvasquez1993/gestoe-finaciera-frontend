@@ -10,7 +10,7 @@ export const DashboardHeader = () => {
   const storeUser = useAuthStore((state) => state.user);
   const clearSession = useAuthStore((state) => state.clearSession);
 
-  const name = me?.name ?? storeUser?.name ?? "Usuario";
+  const name = me?.name ?? storeUser?.name ?? "Usuário";
   const email = me?.email.toString() ?? storeUser?.email ?? "";
 
   return (
@@ -30,7 +30,7 @@ export const DashboardHeader = () => {
           <ThemeToggle />
           <Button variant="outline" size="sm" onClick={clearSession}>
             <LogOut size={16} />
-            Salir
+            Sair
           </Button>
         </div>
       </div>

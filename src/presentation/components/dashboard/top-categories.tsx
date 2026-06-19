@@ -7,7 +7,7 @@ interface TopCategoriesProps {
 }
 
 const formatCurrency = (value: number) =>
-  new Intl.NumberFormat("es-AR", {
+  new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
   }).format(value);
@@ -19,10 +19,10 @@ export const TopCategories = ({ categories }: TopCategoriesProps) => {
     return (
       <div className="rounded-xl border border-border bg-surface p-5">
         <h2 className="mb-2 font-semibold text-text">
-          Top categorías de gastos
+          Principais categorias de gastos
         </h2>
         <p className="text-sm text-text-muted">
-          No hay gastos registrados en este período.
+          Não há gastos registrados neste período.
         </p>
       </div>
     );
@@ -32,7 +32,9 @@ export const TopCategories = ({ categories }: TopCategoriesProps) => {
 
   return (
     <div className="rounded-xl border border-border bg-surface p-5">
-      <h2 className="mb-4 font-semibold text-text">Top categorías de gastos</h2>
+      <h2 className="mb-4 font-semibold text-text">
+        Principais categorias de gastos
+      </h2>
 
       <div className="flex flex-col gap-4">
         {categories.map((cat) => (
@@ -52,7 +54,7 @@ export const TopCategories = ({ categories }: TopCategoriesProps) => {
                   }
                   className="flex items-center gap-1 whitespace-nowrap text-xs font-medium text-primary-600 hover:underline"
                 >
-                  Ver más
+                  Ver mais
                   <ArrowRight size={12} />
                 </button>
               </div>
@@ -71,7 +73,7 @@ export const TopCategories = ({ categories }: TopCategoriesProps) => {
         onClick={() => goWithFilters({ type: "saida" })}
         className="mt-5 flex w-full items-center justify-center gap-1 rounded-lg border border-border py-2.5 text-sm font-medium text-text-muted transition-colors hover:bg-surface-hover hover:text-text"
       >
-        Ver todas las transacciones
+        Ver todas as transações
         <ArrowRight size={14} />
       </button>
     </div>

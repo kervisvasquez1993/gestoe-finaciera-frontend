@@ -18,7 +18,7 @@ export const normalizeHttpError = (error: unknown): NormalizedHttpError => {
     ? rawMessage
     : rawMessage
       ? [rawMessage]
-      : ["Ocurrió un error inesperado"];
+      : ["Ocorreu um erro inesperado"];
 
   return { statusCode, messages };
 };

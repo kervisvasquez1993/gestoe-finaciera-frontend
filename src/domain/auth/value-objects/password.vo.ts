@@ -9,13 +9,11 @@ export class Password {
 
   static create(value: string): Password {
     if (value.length < 6) {
-      throw new InvalidPasswordError(
-        "La contraseña debe tener al menos 6 caracteres",
-      );
+      throw new InvalidPasswordError("A senha deve ter no mínimo 6 caracteres");
     }
     if (value.length > 100) {
       throw new InvalidPasswordError(
-        "La contraseña no puede superar 100 caracteres",
+        "A senha não pode ultrapassar 100 caracteres",
       );
     }
     return new Password(value);

@@ -10,11 +10,11 @@ export class CategoryName {
   static create(value: string): CategoryName {
     const trimmed = value.trim();
     if (trimmed.length < 1) {
-      throw new InvalidCategoryNameError("El nombre es requerido");
+      throw new InvalidCategoryNameError("O nome é obrigatório");
     }
     if (trimmed.length > 120) {
       throw new InvalidCategoryNameError(
-        "El nombre no puede superar 120 caracteres",
+        "O nome não pode ultrapassar 120 caracteres",
       );
     }
     return new CategoryName(trimmed);
