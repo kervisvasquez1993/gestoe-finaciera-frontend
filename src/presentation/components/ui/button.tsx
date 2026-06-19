@@ -46,7 +46,7 @@ export const Button = ({
       disabled={disabled || isLoading}
       {...props}
     >
-      {isLoading ? "Cargando..." : children}
+      {isLoading ? "Carregando..." : children}
     </button>
   );
 };

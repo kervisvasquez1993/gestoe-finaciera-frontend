@@ -7,7 +7,7 @@ interface TopCategoriesProps {
 }
 
 const formatCurrency = (value: number) =>
-  new Intl.NumberFormat("es-AR", {
+  new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
   }).format(value);
@@ -19,10 +19,10 @@ export const TopCategories = ({ categories }: TopCategoriesProps) => {
     return (
       <div className="rounded-xl border border-border bg-surface p-5">
         <h2 className="mb-2 font-semibold text-text">
-          Top categorías de gastos
+          Principais categorias de gastos
         </h2>
         <p className="text-sm text-text-muted">
-          No hay gastos registrados en este período.
+          Não há gastos registrados neste período.
         </p>
       </div>
     );
@@ -33,7 +33,9 @@ export const TopCategories = ({ categories }: TopCategoriesProps) => {
   return (
     <div className="rounded-xl border border-border bg-surface p-5">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="font-semibold text-text">Top categorías de gastos</h2>
+        <h2 className="font-semibold text-text">
+          Principais categorias de gastos
+        </h2>
         <button
           onClick={() => goWithFilters({ type: "saida" })}
           className="flex items-center gap-1 text-sm font-medium text-primary-600 hover:underline"

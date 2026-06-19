@@ -14,9 +14,9 @@ export const TransactionsScreen = () => {
   return (
     <div className="flex flex-col gap-6">
       <header className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-text">Transacciones</h1>
+        <h1 className="text-2xl font-bold text-text">Transações</h1>
         <Link to="/dashboard/transactions/new">
-          <Button className="w-auto">Nueva transacción</Button>
+          <Button className="w-auto">Nova transação</Button>
         </Link>
       </header>
 
@@ -24,18 +24,16 @@ export const TransactionsScreen = () => {
 
       <DataList isLoading={isLoading} isError={isError} isEmpty={isEmpty}>
         <DataList.Loading>
-          <p className="text-text-muted">Cargando transacciones...</p>
+          <p className="text-text-muted">Carregando transações...</p>
         </DataList.Loading>
 
         <DataList.Error>
-          <Alert
-            message={errorMessage ?? "Error al cargar las transacciones"}
-          />
+          <Alert message={errorMessage ?? "Erro ao carregar as transações"} />
         </DataList.Error>
 
         <DataList.Empty>
           <p className="text-text-muted">
-            No hay transacciones que coincidan. Creá una o ajustá los filtros.
+            Nenhuma transação corresponde. Crie uma ou ajuste os filtros.
           </p>
         </DataList.Empty>
 

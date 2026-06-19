@@ -11,7 +11,7 @@ export const ThemeToggle = () => {
     <Button
       variant="ghost"
       size="icon"
-      aria-label="Cambiar tema"
+      aria-label="Alterar tema"
       onClick={toggleTheme}
     >
       {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}

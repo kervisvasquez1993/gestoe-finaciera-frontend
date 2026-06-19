@@ -26,18 +26,18 @@ export const EditTransactionScreen = () => {
             to="/dashboard/transactions"
             className="text-sm text-text-muted hover:underline"
           >
-            ← Volver
+            ← Voltar
           </Link>
-          <h1 className="text-2xl font-bold text-text">Editar transacción</h1>
+          <h1 className="text-2xl font-bold text-text">Editar transação</h1>
         </div>
         {!isLoading && !notFound && <DeleteTransactionButton id={id} />}
       </header>
 
-      {isLoading && <p className="text-text-muted">Cargando transacción...</p>}
+      {isLoading && <p className="text-text-muted">Carregando transação...</p>}
 
-      {isError && <Alert message="Error al cargar la transacción" />}
+      {isError && <Alert message="Erro ao carregar a transação" />}
 
-      {notFound && <Alert message="La transacción no existe o no es tuya" />}
+      {notFound && <Alert message="A transação não existe ou não é sua" />}
 
       {!isLoading && !isError && !notFound && (
         <TransactionForm
@@ -47,7 +47,7 @@ export const EditTransactionScreen = () => {
           isPending={isPending}
           serverError={serverError}
           onSubmit={handleSubmit}
-          submitLabel="Guardar cambios"
+          submitLabel="Salvar alterações"
         />
       )}
     </div>

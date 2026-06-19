@@ -11,7 +11,7 @@ export const FormContext = createContext<FormContextValue | null>(null);
 export const useFormContext = () => {
   const ctx = useContext(FormContext);
   if (!ctx) {
-    throw new Error("Form.* debe usarse dentro de <Form>");
+    throw new Error("Form.* deve ser usado dentro de <Form>");
   }
   return ctx;
 };

@@ -12,7 +12,7 @@ import {
 import { CategoriesOverview } from "../../hooks/dashboard/categories-overview";
 
 const formatCurrency = (value: number) =>
-  new Intl.NumberFormat("es-AR", {
+  new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
   }).format(value);
@@ -23,11 +23,11 @@ export const HomeScreen = () => {
   return (
     <div className="flex flex-col gap-6">
       <header className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-text">Resumen</h1>
+        <h1 className="text-2xl font-bold text-text">Resumo</h1>
         <Link to="/dashboard/transactions/new">
           <Button>
             <Plus size={16} />
-            Nueva transacción
+            Nova transação
           </Button>
         </Link>
       </header>
@@ -35,28 +35,28 @@ export const HomeScreen = () => {
       <PeriodFilter />
 
       {isError && (
-        <Alert message={errorMessage ?? "Error al cargar el resumen"} />
+        <Alert message={errorMessage ?? "Erro ao carregar o resumo"} />
       )}
 
-      {isLoading && <p className="text-text-muted">Cargando resumen...</p>}
+      {isLoading && <p className="text-text-muted">Carregando resumo...</p>}
 
       {summary && (
         <>
           <div className="grid gap-4 sm:grid-cols-3">
             <SummaryCard
-              label="Saldo actual"
+              label="Saldo atual"
               value={formatCurrency(summary.saldoAtual)}
               icon={<Wallet size={20} />}
               accent={summary.isPositive() ? "success" : "danger"}
             />
             <SummaryCard
-              label="Total entradas"
+              label="Total de entradas"
               value={formatCurrency(summary.totalEntradas)}
               icon={<ArrowUpCircle size={20} />}
               accent="success"
             />
             <SummaryCard
-              label="Total salidas"
+              label="Total de saídas"
               value={formatCurrency(summary.totalSaidas)}
               icon={<ArrowDownCircle size={20} />}
               accent="danger"

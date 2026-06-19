@@ -13,9 +13,9 @@ export const CreateTransactionScreen = () => {
           to="/dashboard/transactions"
           className="text-sm text-text-muted hover:underline"
         >
-          ← Volver
+          ← Voltar
         </Link>
-        <h1 className="text-2xl font-bold text-text">Nueva transacción</h1>
+        <h1 className="text-2xl font-bold text-text">Nova transação</h1>
       </header>
 
       <TransactionForm
@@ -25,7 +25,7 @@ export const CreateTransactionScreen = () => {
         isPending={isPending}
         serverError={serverError}
         onSubmit={handleSubmit}
-        submitLabel="Crear transacción"
+        submitLabel="Criar transação"
       />
     </div>
   );

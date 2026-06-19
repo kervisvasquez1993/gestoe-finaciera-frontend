@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 
 const LINKS = [
-  { to: "/dashboard", label: "Resumen", end: true },
-  { to: "/dashboard/transactions", label: "Transacciones", end: false },
-  { to: "/dashboard/categories", label: "Categorías", end: false },
+  { to: "/dashboard", label: "Resumo", end: true },
+  { to: "/dashboard/transactions", label: "Transações", end: false },
+  { to: "/dashboard/categories", label: "Categorias", end: false },
 ];
 
 export const DashboardNav = () => {

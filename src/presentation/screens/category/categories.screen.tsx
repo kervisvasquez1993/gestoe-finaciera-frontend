@@ -21,25 +21,25 @@ export const CategoriesScreen = () => {
   return (
     <div className="flex flex-col gap-6">
       <header className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-text">Categorías</h1>
+        <h1 className="text-2xl font-bold text-text">Categorias</h1>
         <Button onClick={() => setCreateOpen(true)}>
           <Plus size={16} />
-          Nueva categoría
+          Nova categoria
         </Button>
       </header>
 
       <DataList isLoading={isLoading} isError={isError} isEmpty={isEmpty}>
         <DataList.Loading>
-          <p className="text-text-muted">Cargando categorías...</p>
+          <p className="text-text-muted">Carregando categorias...</p>
         </DataList.Loading>
 
         <DataList.Error>
-          <Alert message={errorMessage ?? "Error al cargar las categorías"} />
+          <Alert message={errorMessage ?? "Erro ao carregar as categorias"} />
         </DataList.Error>
 
         <DataList.Empty>
           <p className="text-text-muted">
-            No tenés categorías todavía. Creá la primera.
+            Você ainda não tem categorias. Crie a primeira.
           </p>
         </DataList.Empty>
 
